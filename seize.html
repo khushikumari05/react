@@ -15,14 +15,12 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     // Your task starts here
+
     // here create the element p tag
-    // const element =  React.createElement('p', null, 'Seize the day');
-
-    // // rendering
-    // ReactDOM.render(element, document.getElementById('root')); 
-
     const element = React.createElement("p", {id:"para"}, "Seize the day");
     const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+    
+    // rendering
     reactRoot.render(element);
 
 </script>
