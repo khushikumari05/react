@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .image {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin: auto;
+      gap: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your ItemList component code will go here
+    function Gallery({ children }) {
+      return (
+        <>
+          <div className="image">{children}</div>
+        </>
+      );
+    }
+    function Image({ src }) {
+      return (
+        <>
+          <img src={src} />
+        </>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Gallery>
+            <Image src="https://images.pexels.com/photos/416160/pexels-photo-416160.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <Image src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <Image src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <Image src="https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <Image src="https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            <Image src="https://images.pexels.com/photos/669015/pexels-photo-669015.jpeg?auto=compress&cs=tinysrgb&w=600" />
+            </Gallery>
+        </>
+      )
+    }
+// Rendering the element in a React application
+  const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+  reactRoot.render(<App />);
+
+  </script>
+</body>
+
+</html>
