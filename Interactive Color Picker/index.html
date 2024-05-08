@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive color picker</title>
+    <style>
+       body {
+        font-family: Arial, Helvetica, sans-serif;
+       }
+       
+       #container{
+        display: flex;
+        width: 80%;
+        margin: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:10px;
+       }
+
+        #inputColor{
+            padding: 10px;
+            font-family: sans-serif;
+            font-size: 15px;
+            border-radius: 10px;
+            background-color: rgba(165, 42, 42, 0.397);
+            border: 1px solid black;
+            color: black;
+            outline:0;
+        }
+
+        #colorBox {
+            height: 100px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your  code will go here
+   function App () {
+     let [color,setColor] = React.useState("#FFFFFF");
+
+    function handleInputChange (e) {
+        setColor(e.target.value)
+    }
+
+
+    let colorDisplay = {
+        backgroundColor :color
+    }
+
+    if(color.length >7) {
+        alert("Invalid Hex code");
+        setColor("");
+    }else {
+        return (
+        <div id = "container">
+            <h1>Interactive Color Picker</h1>
+           <input type="text" value={color}  placeholder="Enter the Hex color code.."onChange = {handleInputChange} id="inputColor"/>
+           <div id="colorBox" style={colorDisplay} ></div>
+        </div>
+    )
+    }
+   }
+
+    let rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App/>)
+  </script>
+</html>
